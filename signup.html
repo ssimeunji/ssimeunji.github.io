@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="./signup.css" rel="stylesheet">
+    <script type="text/javascript" src="./js.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="bg-info bg-gradient s_signup_header d-flex shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-left s_signup_back" viewBox="0 0 16 16" onclick="location.href='./index.html'">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg>
+        <h3 class="text-light fw-bold ">회원가입</h3>
+    </div>
+    <form class="s_container">
+        <!-- id -->
+        <div class="row mb-2">
+            <label class="text-muted col-sm-3 col-form-label">아이디</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control shadow-sm bg-body rounded s_signup_ph" id="id" onblur="idCheck()" placeholder="영문소문자로 시작, 숫자와 -_ 허용, 4~20글자 이내"/>
+                <!-- correct icon -->
+                <svg id="id-correct-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check s_signup_correct_icon" viewBox="0 0 16 16">
+                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                </svg>
+                <!-- wrong icon -->
+                <svg id="id-wrong-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x s_signup_wrong_icon" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+                <p  class="s_signup_result_text" id="id-result">
+                </p>
+            </div>
+        </div>
+        <!-- pw -->
+        <div class="row mb-2">
+            <label class="text-muted col-sm-3 col-form-label">비밀번호</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control shadow-sm bg-body rounded s_signup_ph" id="pw" placeholder="문자와 특수문자 조합, 6~24글자 이내" onblur="pwCheck()"/>
+                <!-- correct icon -->
+                <svg id="pw-correct-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check s_signup_correct_icon" viewBox="0 0 16 16">
+                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                </svg>
+                <!-- wrong icon -->
+                <svg id="pw-wrong-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x s_signup_wrong_icon" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+                <p class="s_signup_result_text" id="pw-result"></p>
+            </div>
+        </div>
+        <!-- pwc -->
+        <div class="row mb-2">
+            <label class="text-muted col-sm-3 col-form-label">비밀번호 확인</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control shadow-sm bg-body rounded" id="pw-confirm" onblur="pwConCheck()"/>
+                <!-- correct icon -->
+                <svg id="pwc-correct-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check s_signup_correct_icon" viewBox="0 0 16 16">
+                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                </svg>
+                <!-- wrong icon -->
+                <svg id="pwc-wrong-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x s_signup_wrong_icon" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+                <p class="s_signup_result_text" id="pw-confirm-result"></p>
+            </div>
+        </div>
+        <!-- gender -->
+        <div class="row mb-2">
+            <label class="text-muted col-form-label col-sm-3 pt-0">성별</label>
+            <div class="col-sm-9" style="display: flex;">
+                <div class="form-check" style="flex-grow: 1;">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="male" checked>
+                    <label class="form-check-label text-muted" for="flexRadioDefault1">
+                    남자
+                    </label>
+                </div>
+                <div class="form-check" style="flex-grow: 8;">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="femail">
+                    <label class="form-check-label text-muted" for="flexRadioDefault2">
+                    여자
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- email -->
+        <div class="row mb-3">
+            <label class="text-muted col-sm-3 col-form-label">이메일</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control shadow-sm bg-body rounded s_signup_email" id="email" onblur="emailCheck()"/>
+                <label class="text-muted">@</label>
+                <input type="text" class="form-control shadow-sm bg-body rounded s_signup_email_2" id="domain" onblur="domainCheck()"/>
+                <select class="text-muted form-select shadow-sm s_signup_email_btn" id="domainSelect" onchange="emailSelect()" aria-label="Default select example">
+                    <option value="" selected>직접입력</option>
+                    <option value="naver.com">네이버</option>
+                    <option value="gmail.com">지메일</option>
+                    <option value="hanmail.com">한메일</option>
+                </select>
+                <!-- correct icon -->
+                <svg id="email-correct-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check s_signup_correct_icon" viewBox="0 0 16 16">
+                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                </svg>
+                <!-- wrong icon -->
+                <svg id="email-wrong-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x s_signup_wrong_icon" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+                <p class="s_signup_result_text" id="email-result"></p>
+            </div>
+        </div>
+        <!-- address -->
+        <div class="row mb-3">
+            <label class="text-muted col-sm-3 col-form-label">주소</label>
+            <div class="col-sm-9">
+                <input class="form-control shadow-sm bg-body rounded s_signup_add mb-2 s_signup_ph" type="text" id="add-postcode" placeholder="우편번호">
+                <input class="btn btn-outline-info s_signup_add_btn" type="button" onclick="addressSelect()" value="우편번호 찾기">
+                <input class="form-control shadow-sm bg-body rounded mb-2 s_signup_ph" id="add-address" type="text" placeholder="주소">
+                <input class="form-control shadow-sm bg-body rounded mb-2 s_signup_ph" id="add-detailAddress" type="text" placeholder="상세주소" onblur="addCheck()">
+                <input class="form-control shadow-sm bg-body rounded s_signup_ph" type="text" id="add-extraAddress" placeholder="참고항목">
+                <!-- correct icon -->
+                <svg id="add-correct-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check s_signup_correct_icon" viewBox="0 0 16 16">
+                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                </svg>
+                <!-- wrong icon -->
+                <svg id="add-wrong-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x s_signup_wrong_icon" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+                <p class="s_signup_result_text" id="add-check"></p>
+            </div>
+        </div>
+        
+        <!-- phone -->
+        <div class="row mb-2">
+            <label class="text-muted col-sm-3 col-form-label">전화번호</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control shadow-sm bg-body rounded s_signup_ph" id="phone" placeholder="010-****-****" onblur="phoneCheck()"/>
+                <!-- correct icon -->
+                <svg id="ph-correct-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check s_signup_correct_icon" viewBox="0 0 16 16">
+                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                </svg>
+                <!-- wrong icon -->
+                <svg id="ph-wrong-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x s_signup_wrong_icon" viewBox="0 0 16 16">
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+                <p class="s_signup_result_text" id="phone-check"></p>
+            </div>
+        </div>
+        
+        <input class="btn btn-info text-white form-control shadow-sm rounded mt-3 fw-bold s_signup_btn" type="button" onclick="signUp()" data-bs-toggle="modal" data-bs-target="#exampleModal" value="가입하기"/>
+    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span>가입 완료 되었습니다.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

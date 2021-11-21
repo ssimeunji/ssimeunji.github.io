@@ -1,0 +1,73 @@
+.s_signup_header {
+    height: 100px;
+     /* 가로축 기준 정렬 */
+     justify-content: center;
+     /* 세로축 기준 정렬 */
+     align-items: center;
+}
+.s_container {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+.s_signup_correct_icon {
+    width: 16px;
+    height: 16px;
+    display: none;
+    color: green;
+}
+.s_signup_wrong_icon {
+    width: 16px;
+    height: 16px;
+    display: none;
+    color: red;
+}
+.s_signup_btn {
+    height: 50px;
+}
+.s_signup_btn:hover {
+    font-size: large;
+}
+.s_signup_email {
+    width: calc(40% - 16px) !important;
+    display: inline-block !important;
+}
+.s_signup_email_2, .s_signup_add {
+    width: calc(33% - 16px) !important;
+    display: inline-block !important;
+}
+.s_signup_email_btn {
+    width: auto !important;
+    display: inline-block !important;
+    margin-left: 2px;
+}
+.s_signup_add_btn {
+    margin-top: -2px;
+}
+.s_signup_add_btn:hover {
+    color: #fff !important;
+}
+.s_signup_result_text {
+    /*height: 18px;*/
+    font-size: 12px;
+    margin: 2px 0px 0px 0px;
+    display: inline-block;
+}
+.s_signup_ph::placeholder {
+    font-size: 12px;
+    color: #999 !important;
+}
+.s_signup_back {
+    width: 30px;
+    height: 30px;
+    color: #eee;
+    position: absolute;
+    left: 40px;
+    cursor: pointer;
+}
+.s_signup_skills_bg {
+    background: url(./images/bg_1.jpg) no-repeat center center;
+}
+.s_content_about_text {
+    text-align: left !important;
+}

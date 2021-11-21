@@ -1,0 +1,45 @@
+.s_container {
+    max-width: 620px;
+    height: 92px;
+    margin: 0 auto;
+}
+.s_signup_ph::placeholder {
+    font-size: 12px;
+    color: #999 !important;
+}
+.s_login_left {
+    display: inline-block !important;
+
+}
+.s_login_right {
+    display: inline-block !important;
+
+}
+.s_login_btn {
+    padding: 0px 30px !important;
+}
+.s_signup_correct_icon {
+    width: 16px;
+    height: 16px;
+    display: none;
+    color: green;
+}
+.s_signup_wrong_icon {
+    width: 16px;
+    height: 16px;
+    display: none;
+    color: red;
+}
+.s_signup_result_text {
+    /*height: 18px;*/
+    font-size: 12px;
+    margin: 2px 0px 0px 0px;
+    display: inline-block;
+}
+.s_signin_back {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 40px;
+    cursor: pointer;
+}
